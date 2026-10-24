@@ -1,4 +1,4 @@
-# ava Revision Sheet: Collections Framework + String Manipulation
+# Java Revision Sheet: Collections Framework + String Manipulation
 For your BT Group OA and upcoming technical interviews, these two topics are worth revising together. You want to be able to **recall the syntax quickly, choose the right data structure, and avoid edge-case bugs** without wasting time during coding.
 
 This sheet is designed for quick revision, especially for array/string coding questions, Java MCQs, and interview problems.
