@@ -12,7 +12,13 @@ Java Collections provide data structures for storing and manipulating groups of 
 
 The most important interfaces are:
 
-InterfacePurposeCommon implementations`List`Ordered collection; duplicates allowed`ArrayList`, `LinkedList``Set`Unique elements`HashSet`, `LinkedHashSet`, `TreeSet``Queue`Elements waiting to be processed`LinkedList`, `PriorityQueue``Deque`Insertion/removal at both ends`ArrayDeque`, `LinkedList``Map`Key-value pairs; unique keys`HashMap`, `LinkedHashMap`, `TreeMap`
+| Interface | Purpose | Common implementations |
+|---|---|---|
+| `List` | Ordered collection; duplicates allowed | `ArrayList`, `LinkedList` |
+| `Set` | Unique elements | `HashSet`, `LinkedHashSet`, `TreeSet` |
+| `Queue` | Elements waiting to be processed | `LinkedList`, `PriorityQueue` |
+| `Deque` | Insertion/removal at both ends | `ArrayDeque`, `LinkedList` |
+| `Map` | Key-value pairs; unique keys | `HashMap`, `LinkedHashMap`, `TreeMap` |
 
 **Important distinction:** `Map` is part of the Java Collections Framework, but it does not extend the `Collection` interface.
 
@@ -91,7 +97,13 @@ for (int x : list) {
 
 **Complexity:**
 
-OperationTypical complexity`get(index)`O(1)`set(index, value)`O(1)`add(value)` at endAmortized O(1)Insert/remove at beginning or middleO(n)`contains(value)`O(n)
+| Operation | Typical complexity |
+|---|---|
+| `get(index)` | O(1) |
+| `set(index, value)` | O(1) |
+| `add(value)` at end | Amortized O(1) |
+| Insert/remove at beginning or middle | O(n) |
+| `contains(value)` | O(n) |
 
 Use `ArrayList` as your default list unless the problem suggests something else.
 
@@ -135,7 +147,11 @@ for (int x : arr) {
 `Set.add(x)` returns `false` if the element already exists.
 
 ### Which Set should you use?
-ImplementationOrderingTypical operation cost`HashSet`No guaranteed orderAverage O(1)`LinkedHashSet`Insertion orderAverage O(1)`TreeSet`Sorted orderO(log n)
+| Implementation | Ordering | Typical operation cost |
+|---|---|---|
+| `HashSet` | No guaranteed order | Average O(1) |
+| `LinkedHashSet` | Insertion order | Average O(1) |
+| `TreeSet` | Sorted order | O(log n) |
 
 **Trap:** Do not assume a `HashSet` prints elements in insertion or sorted order.
 
@@ -205,7 +221,7 @@ This pattern is essential for:
 ### Iterating over a HashMap
 
 ```
-for (int key : map.keySet()) {
+for (String key : map.keySet()) {
     System.out.println(key);
 }
 ```
@@ -242,7 +258,11 @@ map.merge(key, 1, Integer::sum);
 For an OA, `getOrDefault()` is usually the easiest pattern to remember.
 
 ### HashMap vs LinkedHashMap vs TreeMap
-StructureKey orderingTypical `get()``HashMap`No guaranteed orderAverage O(1)`LinkedHashMap`Insertion order by defaultAverage O(1)`TreeMap`Sorted by keyO(log n)
+| Structure | Key ordering | Typical `get()` |
+|---|---|---|
+| `HashMap` | No guaranteed order | Average O(1) |
+| `LinkedHashMap` | Insertion order by default | Average O(1) |
+| `TreeMap` | Sorted by key | O(log n) |
 
 **Interview trap:** `HashMap` permits one `null` key and multiple `null` values. `TreeMap` normally requires mutually comparable keys and does not allow a `null` key with its natural ordering.
 
@@ -265,7 +285,11 @@ System.out.println(stack.pop());  // 30
 System.out.println(stack.peek()); // 20
 ```
 
-MethodPurpose`push(x)`Add to top`pop()`Remove and return top`peek()`Read top without removing
+| Method | Purpose |
+|---|---|
+| `push(x)` | Add to top |
+| `pop()` | Remove and return top |
+| `peek()` | Read top without removing |
 
 A stack follows **LIFO**: Last In, First Out.
 
@@ -294,7 +318,13 @@ System.out.println(queue.peek()); // 20
 
 A queue follows **FIFO**: First In, First Out.
 
-MethodBehaviour when operation fails`offer(x)`Returns `false` if insertion fails`poll()`Returns `null` if empty`peek()`Returns `null` if empty`remove()`Throws exception if empty`element()`Throws exception if empty
+| Method | Behaviour when operation fails |
+|---|---|
+| `offer(x)` | Returns `false` if insertion fails |
+| `poll()` | Returns `null` if empty |
+| `peek()` | Returns `null` if empty |
+| `remove()` | Throws an exception if empty |
+| `element()` | Throws an exception if empty |
 
 ### Deque
 A `Deque` supports insertion and removal at both ends.
@@ -350,7 +380,12 @@ System.out.println(maxHeap.peek()); // 30
 ```
 
 ### Complexity
-OperationComplexity`offer()`O(log n)`poll()`O(log n)`peek()`O(1)Construct heap from a collectionO(n) with the collection constructor
+| Operation | Complexity |
+|---|---|
+| `offer()` | O(log n) |
+| `poll()` | O(log n) |
+| `peek()` | O(1) |
+| Construct heap from a collection | O(n) with the collection constructor |
 
 ### Common uses
 
@@ -518,7 +553,25 @@ Assume:
 String s = "Hello World";
 ```
 
-MethodExampleResult`length()``s.length()``11``charAt(i)``s.charAt(0)``'H'``substring(start)``s.substring(6)``"World"``substring(start, end)``s.substring(0, 5)``"Hello"``indexOf()``s.indexOf('o')``4``lastIndexOf()``s.lastIndexOf('o')``7``contains()``s.contains("World")``true``equals()``s.equals("Hello World")``true``equalsIgnoreCase()``s.equalsIgnoreCase("hello world")``true``toCharArray()``s.toCharArray()`Character array`toLowerCase()``s.toLowerCase()`Lowercase string`toUpperCase()``s.toUpperCase()`Uppercase string`trim()``"  hi  ".trim()``"hi"``isEmpty()``"".isEmpty()``true``startsWith()``s.startsWith("Hello")``true``endsWith()``s.endsWith("World")``true``replace()``s.replace("World", "Java")``"Hello Java"`
+| Method | Example | Result |
+|---|---|---|
+| `length()` | `s.length()` | `11` |
+| `charAt(i)` | `s.charAt(0)` | `'H'` |
+| `substring(start)` | `s.substring(6)` | `"World"` |
+| `substring(start, end)` | `s.substring(0, 5)` | `"Hello"` |
+| `indexOf()` | `s.indexOf('o')` | `4` |
+| `lastIndexOf()` | `s.lastIndexOf('o')` | `7` |
+| `contains()` | `s.contains("World")` | `true` |
+| `equals()` | `s.equals("Hello World")` | `true` |
+| `equalsIgnoreCase()` | `s.equalsIgnoreCase("hello world")` | `true` |
+| `toCharArray()` | `s.toCharArray()` | `char[]` |
+| `toLowerCase()` | `s.toLowerCase()` | Lowercase string |
+| `toUpperCase()` | `s.toUpperCase()` | Uppercase string |
+| `trim()` | `"  hi  ".trim()` | `"hi"` |
+| `isEmpty()` | `"".isEmpty()` | `true` |
+| `startsWith()` | `s.startsWith("Hello")` | `true` |
+| `endsWith()` | `s.endsWith("World")` | `true` |
+| `replace()` | `s.replace("World", "Java")` | `"Hello Java"` |
 
 ### Critical edge cases
 **1. `substring()` excludes the ending index.**
@@ -969,7 +1022,23 @@ Output: 3
 ## 17. Choose the right data structure
 This table is worth memorizing.
 
-Problem asks you to…UseFind duplicates`HashSet`Count frequencies`HashMap` or frequency arrayFind first non-repeating characterFrequency array + second passCheck anagramsFrequency array or `HashMap`Retrieve the largest or smallest element repeatedly`PriorityQueue`Find the Kth-largest elementMin-heap of size KMatch opening and closing bracketsStackProcess elements in arrival orderQueueMaintain sorted unique values`TreeSet`Maintain sorted key-value pairs`TreeMap`Check whether a prefix existsTrie, for suitable problemsBuild a string repeatedly`StringBuilder`Reverse a string`StringBuilder` or two pointersFind a substring with constraintsSliding windowFind subarrays with a target sumPrefix sum + `HashMap`, when appropriate
+| Problem asks you to... | Use |
+|---|---|
+| Find duplicates | `HashSet` |
+| Count frequencies | `HashMap` or frequency array |
+| Find the first non-repeating character | Frequency array + second pass |
+| Check anagrams | Frequency array or `HashMap` |
+| Retrieve the largest or smallest element repeatedly | `PriorityQueue` |
+| Find the Kth-largest element | Min-heap of size K |
+| Match opening and closing brackets | Stack |
+| Process elements in arrival order | Queue |
+| Maintain sorted unique values | `TreeSet` |
+| Maintain sorted key-value pairs | `TreeMap` |
+| Check whether a prefix exists | Trie, for suitable problems |
+| Build a string repeatedly | `StringBuilder` |
+| Reverse a string | `StringBuilder` or two pointers |
+| Find a substring with constraints | Sliding window |
+| Find subarrays with a target sum | Prefix sum + `HashMap`, when appropriate |
 
 ### A particularly important distinction
 **Finding whether a value exists** and **counting how many times it appears** are different tasks.
